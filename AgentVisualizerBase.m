@@ -7,7 +7,7 @@ classdef AgentVisualizerBase < VisualizerBase
         function obj = AgentVisualizerBase(args)
             obj.time_list = zeros(1,args.memory_size);
         end
-        function setTimeList(this, time_stamp)
+        function setTimeList(this, time_stamp, iMem)
             this.time_list(:,iMem) = time_stamp;
         end
         function setPosition(this, arg_position, iMem)
