@@ -19,6 +19,18 @@ classdef AgentVisualizer2D < AgentVisualizerBase
             end
             hold on
         end
+        function visualizeAgentPositionWithText(this, stamp, symbol, b_filled, txt)
+            position_at_stamp = this.position(:,stamp);
+            if b_filled
+                scatter(position_at_stamp(1,:), position_at_stamp(2,:), symbol, 'filled')
+            else
+                scatter(position_at_stamp(1,:), position_at_stamp(2,:), symbol)
+            end
+            hold on
+            % TODO
+            txt = ['  ', txt];
+            text(position_at_stamp(1,:), position_at_stamp(2,:), txt)
+        end
         function visualizePositionDifference(this1, this2, stamp, symbol)
             x_vector = [this1.position(1, stamp), this2.position(1, stamp)];
             y_vector = [this1.position(2, stamp), this2.position(2, stamp)];

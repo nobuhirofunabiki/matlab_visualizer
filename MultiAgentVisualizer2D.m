@@ -19,6 +19,10 @@ classdef MultiAgentVisualizer2D < MultiAgentVisualizerBase
             this.visualizers(iAgents).visualizeAgentPosition(...
                 stamp, symbol, b_filled);
         end
+        function visualizeAgentPositionWithText(this, iAgents, stamp, symbol, b_filled, txt)
+            this.visualizers(iAgents).visualizeAgentPosition(...
+                stamp, symbol, b_filled, txt);
+        end
         % Setters (Pass-through functions to AgentVisualizer2D)
         function setTimeList(this, iAgents, time_stamp, iMem)
             this.visualizers(iAgents).setTimeList(time_stamp, iMem);
