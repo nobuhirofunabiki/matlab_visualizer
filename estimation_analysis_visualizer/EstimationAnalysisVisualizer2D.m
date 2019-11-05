@@ -4,9 +4,11 @@ classdef EstimationAnalysisVisualizer2D < EstimationAnalysisVisualizerBase
     end
     methods
         function obj = EstimationAnalysisVisualizer2D(args)
-            obj.estimate_error_position_vector      = zeros(3,memory_size);
-            obj.estimate_error_velocity_vector      = zeros(3,memory_size);
-            obj.estimate_performance_index          = zeros(6,memory_size);
+            obj@EstimationAnalysisVisualizerBase(args);
+            memory_size = args.memory_size;
+            obj.estimate_error_position_vector  = zeros(2,memory_size);
+            obj.estimate_error_velocity_vector  = zeros(2,memory_size);
+            obj.estimate_performance_index      = zeros(4,memory_size);
         end
 
         % Utility funcitons
