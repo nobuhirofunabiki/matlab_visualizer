@@ -42,6 +42,9 @@ classdef MultiEstimationAnalysisVisualizerBase < handle
         function visualizeEstimatePerformanceIndex(this, iAgents, time_list, iVar, stamp)
             this.visualizers(iAgents).visualizeEstimatePerformanceIndex(time_list, iVar, stamp);
         end
+        function visualizeDiagonalElementsOfCovmatPosition(this, iAgents, time_list, stamp)
+            this.visualizers(iAgents).visualizeDiagonalElementsOfCovmatPosition(time_list, stamp);
+        end
 
     end
 end

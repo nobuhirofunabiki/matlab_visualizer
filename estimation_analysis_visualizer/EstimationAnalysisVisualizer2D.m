@@ -24,5 +24,13 @@ classdef EstimationAnalysisVisualizer2D < EstimationAnalysisVisualizerBase
             end
             this.estimate_performance_index(:,iMem) = performance_index;
         end
+        
+        % Setters
+        function calculateDiagonalElementsOfCovarinaceMatrix(this, covariance_matrix, iMem)
+            this.diag_covmat_position(1,iMem) = ...
+                sqrt(this.chi2*(covariance_matrix(1, 1) + covariance_matrix(2, 2)));
+            this.diag_covmat_position(1,iMem) = ...
+                sqrt(this.chi2*(covariance_matrix(3, 3) + covariance_matrix(4, 4)));
+        end
     end
 end

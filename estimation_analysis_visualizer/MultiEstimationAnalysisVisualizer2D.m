@@ -18,5 +18,10 @@ classdef MultiEstimationAnalysisVisualizer2D < MultiEstimationAnalysisVisualizer
         function calculateEstimatePerformanceIndex(this, iAgents, covariance_matrix, iMem)
             this.visualizers(iAgents).calculateEstimatePerformanceIndex(covariance_matrix, iMem);
         end
+
+        % Setters
+        function calculateDiagonalElementsOfCovarinaceMatrix(this, iAgents, covariance_matrix, iMem)
+            this.visualizers(iAgents).calculateDiagonalElementsOfCovarinaceMatrix(covariance_matrix, iMem);
+        end
     end
 end

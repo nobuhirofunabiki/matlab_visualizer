@@ -6,6 +6,8 @@ classdef EstimationAnalysisVisualizerBase < handle
         estimate_error_position_vector
         estimate_error_velocity_scalar
         estimate_error_velocity_vector
+        diag_covmat_position
+        diag_covmat_velocity
         estimate_performance_index
     end
     methods
@@ -13,8 +15,10 @@ classdef EstimationAnalysisVisualizerBase < handle
             obj.id = args.id;
             obj.chi2 = args.chi2;
             memory_size = args.memory_size;
-            obj.estimate_error_position_scalar      = zeros(1,memory_size);
-            obj.estimate_error_velocity_scalar      = zeros(1,memory_size);
+            obj.estimate_error_position_scalar   = zeros(1,memory_size);
+            obj.estimate_error_velocity_scalar   = zeros(1,memory_size);
+            obj.diag_covmat_position             = zeros(1,memory_size);
+            obj.diag_covmat_velocity             = zeros(1,memory_size);
         end
 
         % Setters
@@ -55,6 +59,10 @@ classdef EstimationAnalysisVisualizerBase < handle
             plot(time_list, this.estimate_performance_index(iVar,:), stamp);
             hold on
         end
-        
+        function visualizeDiagonalElementsOfCovmatPosition(this, time_list, stamp)
+            plot(time_list, this.diag_covmat_position, stamp)
+            hold on
+        end
+
     end
 end
