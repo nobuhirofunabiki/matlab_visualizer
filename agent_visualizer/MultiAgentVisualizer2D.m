@@ -15,12 +15,18 @@ classdef MultiAgentVisualizer2D < MultiAgentVisualizerBase
         function visualizeAgentTrajectory(this, iAgents, symbol)
             this.visualizers(iAgents).visualizeAgentTrajectory(symbol);
         end
+        function visualizeAgentTrajectoryCustomized(this, iAgents, args)
+            this.visualizers(iAgents).visualizeAgentTrajectoryCustomized(args);
+        end
         function visualizeAgentPosition(this, iAgents, stamp, symbol, b_filled)
             this.visualizers(iAgents).visualizeAgentPosition(...
                 stamp, symbol, b_filled);
         end
+        function visualizeAgentPositionCustomized(this, iAgents, stamp, args)
+            this.visualizers(iAgents).visualizeAgentPositionCustomized(stamp, args);
+        end
         function visualizeAgentPositionWithText(this, iAgents, stamp, symbol, b_filled, txt)
-            this.visualizers(iAgents).visualizeAgentPosition(...
+            this.visualizers(iAgents).visualizeAgentPositionWithText(...
                 stamp, symbol, b_filled, txt);
         end
         % Setters (Pass-through functions to AgentVisualizer2D)
