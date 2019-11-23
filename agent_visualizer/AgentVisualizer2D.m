@@ -30,6 +30,7 @@ classdef AgentVisualizer2D < AgentVisualizerBase
             hold on
         end
         function visualizeAgentPositionCustomized(this, stamp, args)
+            txt = args.txt;
             marker_symbol = args.marker_symbol;
             marker_size = args.marker_size;
             marker_edge_color = args.marker_edge_color;
@@ -41,6 +42,8 @@ classdef AgentVisualizer2D < AgentVisualizerBase
                 'MarkerEdgeColor', marker_edge_color, ...
                 'MarkerFaceColor', marker_face_color)
             hold on
+            txt = ['  ', txt];
+            text(position_at_stamp(1,:), position_at_stamp(2,:), txt)
         end
         function visualizeAgentPositionWithText(this, stamp, symbol, b_filled, txt)
             position_at_stamp = this.position(:,stamp);
