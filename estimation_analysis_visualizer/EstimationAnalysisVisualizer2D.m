@@ -32,5 +32,29 @@ classdef EstimationAnalysisVisualizer2D < EstimationAnalysisVisualizerBase
             this.diag_covmat_position(1,iMem) = ...
                 sqrt(this.chi2*(covariance_matrix(3, 3) + covariance_matrix(4, 4)));
         end
+
+        % Visualization functions
+        function visualizeEstimateErrorPositionScalarCustomized(this, time_list, style)
+            line_color = style.line_color;
+            line_style = style.line_style;
+            line_width = style.line_width;
+            plot (time_list, this.estimate_error_position_scalar, ...
+                'Color', line_color, ...
+                'LineStyle', line_style, ...
+                'LineWidth', line_width);
+            hold on
+        end
+
+        function visualizeEstimateErrorVelocityScalarCustomized(this, time_list, style)
+            line_color = style.line_color;
+            line_style = style.line_style;
+            line_width = style.line_width;
+            plot (time_list, this.estimate_error_velocity_scalar, ...
+                'Color', line_color, ...
+                'LineStyle', line_style, ...
+                'LineWidth', line_width);
+            hold on
+        end
+
     end
 end
