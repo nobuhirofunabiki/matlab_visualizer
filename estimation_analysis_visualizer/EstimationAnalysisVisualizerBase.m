@@ -1,6 +1,5 @@
 classdef EstimationAnalysisVisualizerBase < handle
     properties (SetAccess = protected)
-        id
         chi2
         estimate_error_position_scalar
         estimate_error_position_vector
@@ -12,7 +11,6 @@ classdef EstimationAnalysisVisualizerBase < handle
     end
     methods
         function obj = EstimationAnalysisVisualizerBase(args)
-            obj.id = args.id;
             obj.chi2 = args.chi2;
             memory_size = args.memory_size;
             obj.estimate_error_position_scalar   = zeros(1,memory_size);
@@ -38,6 +36,9 @@ classdef EstimationAnalysisVisualizerBase < handle
         % Getters
         function output = getEstimateErrorPositionScalar(this, iMem)
             output = this.estimate_error_position_scalar(1,iMem);
+        end
+        function output = getEstimateErrorPositionScalarAll(this)
+            output = this.estimate_error_position_scalar;
         end
         function output = getEstimateErrorVelocityScalar(this, iMem)
             output = this.estimate_error_velocity_scalar(1,iMem);

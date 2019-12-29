@@ -1,12 +1,16 @@
 classdef MultiEstimationAnalysisVisualizerBase < handle
-    properties (SetAccess = protected)
+    properties (Abstract = true, SetAccess = protected)
         visualizers
+        num_agents
     end
-    methods
+
+    methods (Access = protected)
         function obj = MultiEstimationAnalysisVisualizerBase(args)
             
         end
+    end
 
+    methods (Access = public)
         % Setters (Pass-through functions to EstimationAnalysisVisualizerBase)
         function setEstimateErrorPositionScalar(this, iAgents, position_true, position_est, iMem)
             this.visualizers(iAgents).setEstimateErrorPositionScalar(position_true, position_est, iMem);
@@ -46,5 +50,35 @@ classdef MultiEstimationAnalysisVisualizerBase < handle
             this.visualizers(iAgents).visualizeDiagonalElementsOfCovmatPosition(time_list, stamp);
         end
 
+        function [plot_mean, plot_variance] = visualizePositionErrorWithMeanAndVariance(this, ...
+            time_list, line_color, line_style, line_width)
+
+            data_size = size(this.visualizers(1).getEstimateErrorPositionScalarAll());
+            mean_position = zeros(data_size);
+            sum_positions = zeros(data_size);
+            standard_deviation = zeros(data_size);
+            all_position_errors = zeros(this.num_agents, length(time_list));
+            for iAgents = 1:this.num_agents
+                sum_positions = sum_positions + ...
+                    this.visualizers(iAgents).getEstimateErrorPositionScalarAll();
+                all_position_errors(iAgents,:) = this.visualizers(iAgents).getEstimateErrorPositionScalarAll();
+            end
+            mean_position = sum_positions/this.num_agents;
+            for iSteps = 1:length(time_list)
+                standard_deviation(1,iSteps) = sqrt(var(all_position_errors(:,iSteps)));
+            end
+            time_list_agg = [time_list, fliplr(time_list)];
+            in_between = [mean_position-standard_deviation, fliplr(mean_position+standard_deviation)];
+            hold on
+            plot_variance = fill(time_list_agg, in_between, ...
+                line_color, ...
+                'FaceAlpha', 0.3, ...
+                'EdgeColor', 'none');
+            plot_mean = plot(time_list, mean_position, ...
+                'Color', line_color, ...
+                'LineStyle', line_style, ...
+                'LineWidth', line_width);
+        end
     end
+
 end

@@ -12,21 +12,21 @@ classdef MultiAgentVisualizer2D < MultiAgentVisualizerBase
         end
 
         % Visualzation (Pass-through functions to AgentVisualizer2D)
-        function visualizeAgentTrajectory(this, iAgents, symbol)
-            this.visualizers(iAgents).visualizeAgentTrajectory(symbol);
+        function output = visualizeAgentTrajectory(this, iAgents, symbol)
+            output = this.visualizers(iAgents).visualizeAgentTrajectory(symbol);
         end
-        function visualizeAgentTrajectoryCustomized(this, iAgents, args)
-            this.visualizers(iAgents).visualizeAgentTrajectoryCustomized(args);
+        function output = visualizeAgentTrajectoryCustomized(this, iAgents, args)
+            output = this.visualizers(iAgents).visualizeAgentTrajectoryCustomized(args);
         end
-        function visualizeAgentPosition(this, iAgents, stamp, symbol, b_filled)
-            this.visualizers(iAgents).visualizeAgentPosition(...
+        function output = visualizeAgentPosition(this, iAgents, stamp, symbol, b_filled)
+            output = this.visualizers(iAgents).visualizeAgentPosition(...
                 stamp, symbol, b_filled);
         end
-        function visualizeAgentPositionCustomized(this, iAgents, stamp, args)
-            this.visualizers(iAgents).visualizeAgentPositionCustomized(stamp, args);
+        function output = visualizeAgentPositionCustomized(this, iAgents, stamp, args)
+            output = this.visualizers(iAgents).visualizeAgentPositionCustomized(stamp, args);
         end
-        function visualizeAgentPositionWithText(this, iAgents, stamp, symbol, b_filled, txt)
-            this.visualizers(iAgents).visualizeAgentPositionWithText(...
+        function output = visualizeAgentPositionWithText(this, iAgents, stamp, symbol, b_filled, txt)
+            output = this.visualizers(iAgents).visualizeAgentPositionWithText(...
                 stamp, symbol, b_filled, txt);
         end
         % Setters (Pass-through functions to AgentVisualizer2D)
