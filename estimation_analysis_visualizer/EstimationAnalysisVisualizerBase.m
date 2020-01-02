@@ -43,6 +43,9 @@ classdef EstimationAnalysisVisualizerBase < handle
         function output = getEstimateErrorVelocityScalar(this, iMem)
             output = this.estimate_error_velocity_scalar(1,iMem);
         end
+        function output = getEstimateErrorVelocityScalarAll(this)
+            output = this.estimate_error_velocity_scalar;
+        end
         function output = getPerformanceIndex(this, iMem)
             output = this.estimate_performance_index(:,iMem);
         end

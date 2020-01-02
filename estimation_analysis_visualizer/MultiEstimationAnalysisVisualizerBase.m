@@ -79,6 +79,36 @@ classdef MultiEstimationAnalysisVisualizerBase < handle
                 'LineStyle', line_style, ...
                 'LineWidth', line_width);
         end
+
+        function [plot_mean, plot_variance] = visualizeVelocityErrorWithMeanAndVariance(this, ...
+            time_list, line_color, line_style, line_width)
+
+            data_size = size(this.visualizers(1).getEstimateErrorVelocityScalarAll());
+            mean_velocity = zeros(data_size);
+            sum_velocities = zeros(data_size);
+            standard_deviation = zeros(data_size);
+            all_velocity_errors = zeros(this.num_agents, length(time_list));
+            for iAgents = 1:this.num_agents
+                sum_velocities = sum_velocities + ...
+                    this.visualizers(iAgents).getEstimateErrorVelocityScalarAll();
+                all_velocity_errors(iAgents,:) = this.visualizers(iAgents).getEstimateErrorVelocityScalarAll();
+            end
+            mean_velocity = sum_velocities/this.num_agents;
+            for iSteps = 1:length(time_list)
+                standard_deviation(1,iSteps) = sqrt(var(all_velocity_errors(:,iSteps)));
+            end
+            time_list_agg = [time_list, fliplr(time_list)];
+            in_between = [mean_velocity-standard_deviation, fliplr(mean_velocity+standard_deviation)];
+            hold on
+            plot_variance = fill(time_list_agg, in_between, ...
+                line_color, ...
+                'FaceAlpha', 0.3, ...
+                'EdgeColor', 'none');
+            plot_mean = plot(time_list, mean_velocity, ...
+                'Color', line_color, ...
+                'LineStyle', line_style, ...
+                'LineWidth', line_width);
+        end
     end
 
 end
