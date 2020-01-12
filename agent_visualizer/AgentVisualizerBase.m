@@ -3,10 +3,22 @@ classdef AgentVisualizerBase < VisualizerBase
         time_list
         position
     end
-    methods
+
+    methods (Access = protected)
         function obj = AgentVisualizerBase(args)
             obj.time_list = zeros(1,args.memory_size);
         end
+    end
+
+    methods (Abstract = true, Access = public)
+        visualizeAgentTrajectory(this);
+        visualizeAgentTrajectoryCustomized(this);
+        visualizeAgentPosition(this);
+        visualizeAgentPositionCustomized(this);
+        visualizePositionDifference(this);
+    end
+
+    methods (Access = public)
         function setTimeList(this, time_stamp, iMem)
             this.time_list(:,iMem) = time_stamp;
         end
@@ -17,4 +29,5 @@ classdef AgentVisualizerBase < VisualizerBase
             obj = this.position;
         end
     end
+
 end
