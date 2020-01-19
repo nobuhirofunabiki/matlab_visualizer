@@ -1,17 +1,18 @@
-classdef MultiEstimationAnalysisVisualizer2D < MultiEstimationAnalysisVisualizerBase
+classdef MultiEstimationAnalysisVisualizer < MultiEstimationAnalysisVisualizerBase
     properties (SetAccess = protected)
         visualizers
         num_agents
     end
 
     methods
-        function obj = MultiEstimationAnalysisVisualizer2D(args)
+        function obj = MultiEstimationAnalysisVisualizer(args)
             obj.num_agents = args.num_agents;
             args_visualizer.chi2 = args.chi2;
             args_visualizer.memory_size = args.memory_size;
+            args_visualizer.num_dimensions = args.num_dimensions;
             for iAgents = 1:obj.num_agents
                 visualizers(iAgents) ...
-                    = EstimationAnalysisVisualizer2D(args_visualizer);
+                    = EstimationAnalysisVisualizer(args_visualizer);
             end
             obj.visualizers = visualizers;
         end
