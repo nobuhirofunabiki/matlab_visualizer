@@ -1,17 +1,17 @@
-classdef MultiAgentVisualizer2D < MultiAgentVisualizerBase
+classdef MultiAgentVisualizer3D < MultiAgentVisualizerBase
     properties (SetAccess = protected)
     end
     methods
-        function obj = MultiAgentVisualizer2D(args)
+        function obj = MultiAgentVisualizer3D(args)
             num_agents = args.num_agents;
             args_visualizer.memory_size = args.memory_size;
             for iAgents = 1:num_agents
-                visualizers_(iAgents) = AgentVisualizer2D(args_visualizer);
+                visualizers_(iAgents) = AgentVisualizer3D(args_visualizer);
             end
             obj.visualizers_ = visualizers_;
         end
 
-        % Visualzation (Pass-through functions to AgentVisualizer2D)
+        % Visualzation (Pass-through functions to AgentVisualizer3D)
         function output = visualizeAgentTrajectory(this, iAgents, symbol)
             output = this.visualizers_(iAgents).visualizeAgentTrajectory(symbol);
         end
@@ -29,7 +29,7 @@ classdef MultiAgentVisualizer2D < MultiAgentVisualizerBase
             output = this.visualizers_(iAgents).visualizeAgentPositionWithText(...
                 stamp, symbol, b_filled, txt);
         end
-        % Setters (Pass-through functions to AgentVisualizer2D)
+        % Setters (Pass-through functions to AgentVisualizer3D)
         function setTimeList(this, iAgents, time_stamp, iMem)
             this.visualizers_(iAgents).setTimeList(time_stamp, iMem);
         end

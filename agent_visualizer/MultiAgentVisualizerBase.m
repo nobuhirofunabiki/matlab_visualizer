@@ -1,6 +1,6 @@
 classdef MultiAgentVisualizerBase < handle
     properties (SetAccess = protected)
-        visualizers
+        visualizers_
     end
     methods
         function obj = MultiAgentVisualizerBase(obj,args)
