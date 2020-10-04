@@ -40,22 +40,22 @@ classdef EstimationAnalysisVisualizer < EstimationAnalysisVisualizerBase
         end
 
         % Visualization functions
-        function visualizeEstimateErrorPositionScalarCustomized(this, time_list, style)
+        function output = visualizeEstimateErrorPositionScalarCustomized(this, time_list, style)
             line_color = style.line_color;
             line_style = style.line_style;
             line_width = style.line_width;
-            plot (time_list, this.estimate_error_position_scalar, ...
+            output = plot(time_list, this.estimate_error_position_scalar, ...
                 'Color', line_color, ...
                 'LineStyle', line_style, ...
                 'LineWidth', line_width);
             hold on
         end
 
-        function visualizeEstimateErrorVelocityScalarCustomized(this, time_list, style)
+        function output = visualizeEstimateErrorVelocityScalarCustomized(this, time_list, style)
             line_color = style.line_color;
             line_style = style.line_style;
             line_width = style.line_width;
-            plot (time_list, this.estimate_error_velocity_scalar, ...
+            output = plot(time_list, this.estimate_error_velocity_scalar, ...
                 'Color', line_color, ...
                 'LineStyle', line_style, ...
                 'LineWidth', line_width);
