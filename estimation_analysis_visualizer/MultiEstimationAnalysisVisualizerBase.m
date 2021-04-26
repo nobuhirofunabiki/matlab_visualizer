@@ -50,6 +50,21 @@ classdef MultiEstimationAnalysisVisualizerBase < handle
             this.visualizers(iAgents).visualizeDiagonalElementsOfCovmatPosition(time_list, stamp);
         end
 
+        function visualizePositionErrorAll(this, ...
+            time_list, line_color, line_style, line_width)
+            
+            hold on
+            color_list = colormap(jet(this.num_agents));
+            for iAgents = 1:this.num_agents
+                line_color = color_list(iAgents,:);
+                position_errors = this.visualizers(iAgents).getEstimateErrorPositionScalarAll();
+                plot(time_list, position_errors, ...
+                    'Color', line_color, ...
+                    'LineStyle', line_style, ...
+                    'LineWidth', line_width);
+            end
+        end
+
         function [plot_mean, plot_variance] = visualizePositionErrorWithMeanAndVariance(this, ...
             time_list, line_color, line_style, line_width)
 
