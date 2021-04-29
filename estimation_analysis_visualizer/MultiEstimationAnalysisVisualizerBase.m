@@ -40,6 +40,9 @@ classdef MultiEstimationAnalysisVisualizerBase < handle
         function visualizeEstimateErrorPositionScalar(this, iAgents, time_list, stamp)
             this.visualizers(iAgents).visualizeEstimateErrorPositionScalar(time_list, stamp);
         end
+        function visualizeEstimateErrorPositionScalarCustomized(this, iAgents, time_list, style)
+            this.visualizers(iAgents).visualizeEstimateErrorPositionScalarCustomized(time_list, style);
+        end
         function visualizeEstimateErrorVelocityScalar(this, iAgents, time_list, stamp)
             this.visualizers(iAgents).visualizeEstimateErrorVelocityScalar(time_list, stamp);
         end
