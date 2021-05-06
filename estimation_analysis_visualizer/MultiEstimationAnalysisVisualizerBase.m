@@ -29,8 +29,14 @@ classdef MultiEstimationAnalysisVisualizerBase < handle
         function output = getEstimateErrorPositionScalar(this, iAgents, iMem)
             output = this.visualizers(iAgents).getEstimateErrorPositionScalar(iMem);
         end
+        function output = getEstimateErrorPositionScalarAll(this, iAgents)
+            output = this.visualizers(iAgents).getEstimateErrorPositionScalarAll();
+        end
         function output = getEstimateErrorVelocityScalar(this, iAgents, iMem)
             output = this.visualizers(iAgents).getEstimateErrorVelocityScalar(iMem);
+        end
+        function output = getEstimateErrorVelocityScalarAll(this, iAgents)
+            output = this.visualizers(iAgents).getEstimateErrorVelocityScalarAll();
         end
         function output = getPerformanceIndex(this, iAgents, iMem)
             output = this.visualizers(iAgents).getPerformanceIndex(iMem);
